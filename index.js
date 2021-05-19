@@ -12,9 +12,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 const app= express();
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send("hello")
-})
+
+app.use('/', require('./router/'))
+app.use('/auth', require('./router/auth'))
+app.use('/blog', require('./router/auth'))
+app.use('/product', require('./router/product'))
 
 const port = process.env.PORT || 5000
 app.listen(port, console.log(`app is running on port ${port}, go to http://localhost:${port}`))

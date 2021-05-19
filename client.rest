@@ -1,0 +1,13 @@
+GET http://localhost:5000
+
+###
+GET http://localhost:5000/user
+
+
+
+###
+GET http://localhost:5000/product
+
+
+###
+GET http://localhost:5000/blog
