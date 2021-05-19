@@ -11,3 +11,23 @@ GET http://localhost:5000/product
 
 ###
 GET http://localhost:5000/blog
+
+###
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "password": "54454454",
+    "displayName": "Jihjghjghgm",
+    "email": "vifhvvg@gghh.vom",
+    "imgurl": "Jhggighfhgfghfghffm"
+}
+
+###
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "password": "54454454",
+    "email": "vifhvvg@gghh.vom"
+}
