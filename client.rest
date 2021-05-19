@@ -31,3 +31,25 @@ Content-Type: application/json
     "password": "54454454",
     "email": "vifhvvg@gghh.vom"
 }
+
+###
+POST http://localhost:5000/blog
+Content-Type: application/json
+
+{
+    "title": "54454454",
+    "body": "Jihjghjghgm",
+    "tags": ["vimal","kumar"],
+    "imgurl": "Jhggighfhgfghfghffm"
+}
+
+###
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+    "name": "54454454",
+    "price": "Jihjghjghgm",
+    "tags": ["vimal","kumar"],
+    "imgurl": "Jhggighfhgfghfghffm"
+}

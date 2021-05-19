@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.use('/', require('./router/'))
 app.use('/auth', require('./router/auth'))
-app.use('/blog', require('./router/auth'))
+app.use('/blog', require('./router/blog'))
 app.use('/product', require('./router/product'))
 
 const port = process.env.PORT || 5000
