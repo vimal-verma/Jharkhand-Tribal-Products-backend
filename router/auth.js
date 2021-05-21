@@ -11,7 +11,7 @@ route.post('/register', async (req,res )=>{
     const user = new User({
         email : req.body.email,
         password : req.body.password,
-        displayName : req.body.displayName,
+        name : req.body.name,
         imgurl : req.body.imgurl
     })
 
