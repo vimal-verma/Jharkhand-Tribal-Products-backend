@@ -25,8 +25,16 @@ route.post('/', async (req, res) => {
         imgurl : req.body.imgurl
     })
     try {
-        const savedProduct = await product.save()
-        res.send(savedProduct)
+        Product.findOne({url : product.url})
+        .then( async(result) =>{
+            if (result) {
+                res.status(400).send('url already taken')
+                return
+            } else {
+                const savedproduct = await product.save()
+                res.send(savedproduct)
+            }
+        })
     } catch (error) {
         res.status(404).send(error)
     }

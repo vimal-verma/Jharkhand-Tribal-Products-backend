@@ -30,8 +30,16 @@ route.post('/', async (req, res) => {
         imgurl : req.body.imgurl
     })
     try {
-        const savedblog = await blog.save()
-        res.send(savedblog)
+        Blog.findOne({url : blog.url})
+        .then( async(result) =>{
+            if (result) {
+                res.status(400).send('url already taken')
+                return
+            } else {
+                const savedblog = await blog.save()
+                res.send(savedblog)
+            }
+        })
     } catch (error) {
         res.status(404).send(error)
     }
