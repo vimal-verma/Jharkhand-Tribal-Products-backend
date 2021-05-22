@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const User = require('./user')
 
 const BlogSchema = new Schema({
   title: {
     type: String,
     required: true,
+  },
+  url: {
+    type: String,
+    required: true,
+    unique : true,
   },
   body: {
     type: String,
@@ -15,7 +21,14 @@ const BlogSchema = new Schema({
   },
   imgurl: {
     type: String,
-  }
+  },
+  category: {
+    type: String,
+  },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User
+  },
   
 }, { timestamps: true });
 

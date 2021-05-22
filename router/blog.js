@@ -6,11 +6,27 @@ route.get('/', async (req, res) => {
     res.send(blogs)
 })
 
+route.get('/:url' ,(req,res)=>{
+    Blog.findOne({url : req.params.url})
+    .populate('author')
+    .then(data => {
+        // if (data) {
+        //     data.googleId = "private",
+        //     data.userdata_id.css = "private"
+        // }
+        res.send(data)
+    })
+    .catch(err => console.log(err))
+})
+
 route.post('/', async (req, res) => {
     const blog = new Blog({
         title : req.body.title,
+        url : req.body.url,
         body : req.body.body,
         tags : req.body.tags,
+        category : req.body.category,
+        author : req.body.author,
         imgurl : req.body.imgurl
     })
     try {

@@ -1,30 +1,30 @@
-GET http://localhost:5000
+GET http://localhost:5500
 
 ###
-GET http://localhost:5000/user
+GET http://localhost:5500/user
 
-
-
-###
-GET http://localhost:5000/product
 
 
 ###
-GET http://localhost:5000/blog
+GET http://localhost:5500/product/vimal
+
 
 ###
-POST http://localhost:5000/auth/register
+GET http://localhost:5500/blog/vimal
+
+###
+POST http://localhost:5500/auth/register
 Content-Type: application/json
 
 {
-    "password": "54454454",
-    "displayName": "Jihjghjghgm",
-    "email": "vifhvvg@gghh.vom",
-    "imgurl": "Jhggighfhgfghfghffm"
+    "password": "123456",
+    "name": "vimal kumar",
+    "email": "vv@vv.vv",
+    "imgurl": "https://delegatestudio.com/wp-content/uploads/2020/09/Watchual-Watch-Shop-Online-eCommerce-Store-Ready-Made-WooCommerce-Website-Theme-500x550.jpg"
 }
 
 ###
-POST http://localhost:5000/auth/login
+POST http://localhost:5500/auth/login
 Content-Type: application/json
 
 {
@@ -33,23 +33,29 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/blog
+POST http://localhost:5500/blog
 Content-Type: application/json
 
 {
-    "title": "54454454",
+    "title": "vimal",
+    "url": "vimalverma",
     "body": "Jihjghjghgm",
     "tags": ["vimal","kumar"],
-    "imgurl": "Jhggighfhgfghfghffm"
+    "category": "vimal",
+    "author": "60a883e6306754cd6a6d5717",
+    "imgurl": "https://delegatestudio.com/wp-content/uploads/2020/09/Watchual-Watch-Shop-Online-eCommerce-Store-Ready-Made-WooCommerce-Website-Theme-500x550.jpg"
 }
 
 ###
-POST http://localhost:5000/product
+POST http://localhost:5500/product
 Content-Type: application/json
 
 {
-    "name": "54454454",
-    "price": "Jihjghjghgm",
+    "name": "vimalverma",
+    "url": "vimalverma",
+    "price": "100",
     "tags": ["vimal","kumar"],
-    "imgurl": "Jhggighfhgfghfghffm"
+    "features": "amazing",
+    "description": "website",
+    "imgurl": "https://delegatestudio.com/wp-content/uploads/2020/09/Watchual-Watch-Shop-Online-eCommerce-Store-Ready-Made-WooCommerce-Website-Theme-500x550.jpg"
 }

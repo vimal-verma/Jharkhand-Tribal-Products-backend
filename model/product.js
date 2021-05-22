@@ -6,12 +6,23 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
   },
+  url: {
+    type: String,
+    required: true,
+    unique : true,
+  },
   price: {
     type: String,
     required: true,
   },
   tags: {
     type: Array,
+  },
+  features: {
+    type: Array,
+  },
+  description: {
+    type: String,
   },
   imgurl: {
     type: String,
