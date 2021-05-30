@@ -1,34 +1,33 @@
 const route = require('express').Router()
-// const cloudinary = require("cloudinary").v2;
+const cloudinary = require("cloudinary").v2;
 
 route.get('/', (req, res) => {
     res.send("hello")
 })
 
-// cloudinary.config({
-//     cloud_name: "name",
-//     api_key: "key",
-//     api_secret: "secret"
-//   });
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+  });
 
-// route.post('/upload',(req,res)=>{
-//   console.log(req.files.file)
+route.post('/upload',(req,res)=>{
 
-//     const data = req.files.file
+    const data = req.files.upload.tempFilePath
 
-//     console.log(data)
-//     // upload image here
-//     cloudinary.uploader.upload(data)
-//     .then((result) => {
-//       console.log(result)
-//       res.status(200).send({
-//         uploaded: "true",
-//         url : result
-//       });
-//     })
-//     .catch((error) => {
-//       console.log(error)
-//       res.status(404).send({error});
-//     });
-// })
+    console.log(data)
+    // upload image here
+    cloudinary.uploader.upload(data)
+    .then((result) => {
+      // console.log(result)
+      res.status(200).send({
+        uploaded: "true",
+        url : result.url
+      });
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(404).send({error});
+    });
+})
 module.exports = route
