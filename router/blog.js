@@ -45,4 +45,20 @@ route.post('/', async (req, res) => {
     }
 })
 
+route.put('/:url' ,(req,res)=>{
+    Blog.findOneAndUpdate({url : req.params.url}, req.body)
+    .then(data => {
+        res.send("updated sucessful")
+    })
+    .catch(err => console.log(err))
+})
+
+route.delete('/:url' ,(req,res)=>{
+    Blog.deleteOne({url : req.params.url})
+    .then(data => {
+        res.send(data)
+    })
+    .catch(err => console.log(err))
+})
+
 module.exports = route

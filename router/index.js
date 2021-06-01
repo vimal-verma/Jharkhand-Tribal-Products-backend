@@ -15,9 +15,12 @@ route.post('/upload',(req,res)=>{
 
     const data = req.files.upload.tempFilePath
 
-    console.log(data)
+    // console.log(data)
     // upload image here
-    cloudinary.uploader.upload(data)
+    cloudinary.uploader.upload(data,{
+      folder: "dropship/", 
+      // public_id: req.files.upload.name
+    })
     .then((result) => {
       // console.log(result)
       res.status(200).send({
