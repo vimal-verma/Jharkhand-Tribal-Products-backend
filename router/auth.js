@@ -30,7 +30,7 @@ route.post('/register', async (req,res )=>{
 
     try {
         const saveduser = await user.save()
-        const accesstoken = jwt.sign({saveduser}, process.env.ACCESSTOKEN)
+        const accesstoken = jwt.sign({ user: saveduser }, process.env.ACCESSTOKEN)
         res.header('auth-token', accesstoken).send(accesstoken)
     } catch (error) {
         res.status(404).send(error)
