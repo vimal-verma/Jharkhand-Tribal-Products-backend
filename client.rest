@@ -24,12 +24,22 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5500/auth/login
+POST http://localhost:5500/auth/resetpassword
 Content-Type: application/json
 
 {
     "password": "54454454",
-    "email": "vifhvvg@gghh.vom"
+    "email": "kumarvimal558@gmail.com"
+}
+
+###
+POST http://localhost:5500/email/newproduct
+Content-Type: application/json
+
+{
+    "user": "54454454",
+    "email": "kumarvimal558@gmail.com",
+    "product" : "vimalnew product"
 }
 
 ###

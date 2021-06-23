@@ -24,6 +24,7 @@ app.use('/auth', require('./router/auth'))
 app.use('/blog', require('./router/blog'))
 app.use('/page', require('./router/page'))
 app.use('/product', require('./router/product'))
+app.use('/email', require('./router/email'))
 
 const port = process.env.PORT || 5000
 app.listen(port, console.log(`app is running on port ${port}, go to http://localhost:${port}`))
