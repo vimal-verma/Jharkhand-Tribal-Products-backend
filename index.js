@@ -24,6 +24,7 @@ app.use('/auth', require('./router/auth'))
 app.use('/blog', require('./router/blog'))
 app.use('/page', require('./router/page'))
 app.use('/product', require('./router/product'))
+app.use('/order', require('./router/order'))
 app.use('/email', require('./router/email'))
 
 const port = process.env.PORT || 5000
