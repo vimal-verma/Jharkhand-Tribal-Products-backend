@@ -1,5 +1,6 @@
 const route = require('express').Router()
 const Order = require('../model/order')
+const Product = require('../model/product')
 const jwt = require('jsonwebtoken')
 
 
@@ -31,6 +32,13 @@ route.get('/user', verifytoken ,(req,res)=>{
         res.send(data)
     })
     .catch(err => console.log(err))
+})
+
+route.post('/carts', async (req, res) => {
+    var Ids = req.body
+
+    const product = await Product.find({ _id: Ids},'price')
+    res.send(product)
 })
 
 const verifytoken_order = (req,res, next) =>{
