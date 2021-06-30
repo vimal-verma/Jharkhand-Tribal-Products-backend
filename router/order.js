@@ -26,12 +26,17 @@ route.get('/',verifytoken, async (req, res) => {
 
 route.get('/user', verifytoken ,(req,res)=>{
     Order.find({user : req.user.user._id})
-    .populate('user')
-    .populate('product')
     .then(data => {
         res.send(data)
     })
     .catch(err => console.log(err))
+})
+
+route.get('/id/:id', async (req, res) => {
+    const orders = await Order.findOne({_id : req.params.id})
+    .populate('user')
+    .populate('product')
+    res.send(orders)
 })
 
 route.post('/carts', async (req, res) => {
@@ -101,10 +106,15 @@ route.post('/', verifytoken_order, async (req, res) => {
         id : req.body.id,
         
     })
-    console.log(order)
     try {
         order.save()
-        .then( result =>res.send(result))
+        .then( result =>{
+            Product.updateMany({_id : product_id}, {
+                $inc: {stock : -1}
+            } )
+            .then(res.send(result))
+            .catch(err => res.send(err))
+        })
         .catch(err => res.send(err))
     } catch (error) {
         res.status(404).send(error)

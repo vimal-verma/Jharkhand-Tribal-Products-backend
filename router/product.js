@@ -20,7 +20,7 @@ const verifytokenbyparams = (req,res, next) =>{
 }
 
 route.get('/', async (req, res) => {
-    const products = await Product.find().sort({createdAt: -1})
+    const products = await Product.find({ stock: { $gte: 1} }).sort({createdAt: -1})
     res.send(products)
 })
 
@@ -39,6 +39,7 @@ route.post('/', verifytoken, async (req, res) => {
             name : req.body.name,
             url : req.body.url,
             price : req.body.price,
+            stock : req.body.stock,
             tags : req.body.tags,
             features : req.body.features,
             description : req.body.description,
