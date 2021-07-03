@@ -20,7 +20,11 @@ const verifytokenbyparams = (req,res, next) =>{
 }
 
 route.get('/', async (req, res) => {
-    const blogs = await Blog.find().sort({createdAt: -1})
+    var limit = 100;
+    if (req.query.limit) {
+        limit = parseInt(req.query.limit)
+    }
+    const blogs = await Blog.find().sort({createdAt: -1}).limit(limit)
     res.send(blogs)
 })
 

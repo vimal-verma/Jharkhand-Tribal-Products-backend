@@ -20,7 +20,11 @@ const verifytokenbyparams = (req,res, next) =>{
 }
 
 route.get('/', async (req, res) => {
-    const products = await Product.find({ stock: { $gte: 1} }).sort({createdAt: -1})
+    var limit = 100;
+    if (req.query.limit) {
+        limit = parseInt(req.query.limit)
+    }
+    const products = await Product.find({ stock: { $gte: 1} }).sort({createdAt: -1}).limit(limit)
     res.send(products)
 })
 

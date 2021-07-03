@@ -42,7 +42,7 @@ route.get('/id/:id', async (req, res) => {
 route.post('/carts', async (req, res) => {
     var Ids = req.body
 
-    const product = await Product.find({ _id: Ids},'price')
+    const product = await Product.find({ _id: Ids, stock: { $gte: 1}},'price')
     res.send(product)
 })
 

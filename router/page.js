@@ -36,6 +36,9 @@ route.post('/', verifytoken, async (req, res) => {
     if (req.user.user.email === process.env.ADMIN) {
         const page = new Page({
             title : req.body.title,
+            descripition : req.body.descripition,
+            button : req.body.button,
+            videourl : req.body.videourl,
             url : req.body.url,
             body : req.body.body,
             tags : req.body.tags,
