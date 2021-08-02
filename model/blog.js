@@ -10,7 +10,7 @@ const BlogSchema = new Schema({
   url: {
     type: String,
     required: true,
-    unique : true,
+    unique: true,
   },
   body: {
     type: String,
@@ -29,7 +29,7 @@ const BlogSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: User
   },
-  
+
 }, { timestamps: true });
 
 const Blog = mongoose.model('Blog', BlogSchema);

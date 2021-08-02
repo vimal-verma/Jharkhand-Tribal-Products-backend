@@ -9,7 +9,7 @@ const ProductSchema = new Schema({
   url: {
     type: String,
     required: true,
-    unique : true,
+    unique: true,
   },
   price: {
     type: Number,
@@ -30,7 +30,7 @@ const ProductSchema = new Schema({
   imgurl: {
     type: String,
   }
-  
+
 }, { timestamps: true });
 
 const Product = mongoose.model('Product', ProductSchema);

@@ -9,7 +9,7 @@ const PageSchema = new Schema({
   descripition: {
     type: String,
     default: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-  },  
+  },
   button: {
     type: String,
     default: 'Order your service now'
@@ -21,7 +21,7 @@ const PageSchema = new Schema({
   url: {
     type: String,
     required: true,
-    unique : true,
+    unique: true,
   },
   body: {
     type: String,
@@ -33,7 +33,7 @@ const PageSchema = new Schema({
   imgurl: {
     type: String,
   }
-  
+
 }, { timestamps: true });
 
 const Page = mongoose.model('Page', PageSchema);

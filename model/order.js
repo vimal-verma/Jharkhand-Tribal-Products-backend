@@ -27,7 +27,7 @@ const OrderSchema = new Schema({
     type: String,
     required: true,
   },
-  create_time:{
+  create_time: {
     type: Date
   },
   email_address: {
@@ -39,7 +39,7 @@ const OrderSchema = new Schema({
   id: {
     type: String,
   },
-  
+
 }, { timestamps: true });
 
 const Order = mongoose.model('Order', OrderSchema);

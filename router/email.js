@@ -1,11 +1,11 @@
 const route = require('express').Router()
 var fs = require('fs');
-var {transporter} = require('../utils/email')
+var { transporter } = require('../utils/email')
 var ejs = require("ejs");
 
-route.post('/newproduct' , async (req,res )=>{
+route.post('/newproduct', async (req, res) => {
 
-    ejs.renderFile(__dirname + "/../public/newproduct.ejs", { user:req.body.user, product:req.body.product }, function (err, data) {
+    ejs.renderFile(__dirname + "/../public/newproduct.ejs", { user: req.body.user, product: req.body.product }, function (err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -28,9 +28,9 @@ route.post('/newproduct' , async (req,res )=>{
     });
 })
 
-route.post('/productready' , async (req,res )=>{
+route.post('/productready', async (req, res) => {
 
-    ejs.renderFile(__dirname + "/../public/productready.ejs", { user:req.body.user, product:req.body.product }, function (err, data) {
+    ejs.renderFile(__dirname + "/../public/productready.ejs", { user: req.body.user, product: req.body.product }, function (err, data) {
         if (err) {
             console.log(err);
         } else {

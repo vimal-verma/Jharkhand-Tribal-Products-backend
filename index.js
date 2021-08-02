@@ -11,12 +11,12 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => console.log('connected to db'))
   .catch(err => console.log(err));
 
-const app= express();
+const app = express();
 app.use(express.json())
 app.use(cors())
 app.use(fileUpload({
-  useTempFiles : true,
-  tempFileDir : '/tmp/'
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
 }));
 
 app.use('/', require('./router/'))
