@@ -3,16 +3,8 @@ const Product = require('../model/product')
 const jwt = require('jsonwebtoken')
 
 const verifytoken = (req, res, next) => {
-    const Jwt = req.body.jwt
-    jwt.verify(Jwt, process.env.ACCESSTOKEN, (err, user) => {
-        if (err) return res.status(404).send('Invalid User, Please logout and login again')
-        req.user = user
-        next()
-    });
-}
-const verifytokenbyparams = (req, res, next) => {
-    const Jwt = req.params.token
-    jwt.verify(Jwt, process.env.ACCESSTOKEN, (err, user) => {
+    const Token = req.headers.token
+    jwt.verify(Token, process.env.ACCESSTOKEN, (err, user) => {
         if (err) return res.status(404).send('Invalid User, Please logout and login again')
         req.user = user
         next()
@@ -68,7 +60,7 @@ route.post('/', verifytoken, async (req, res) => {
     }
 })
 
-route.put('/:url/:token', verifytoken, (req, res) => {
+route.put('/:url', verifytoken, (req, res) => {
     if (req.user.user.email === process.env.ADMIN) {
         Product.findOneAndUpdate({ url: req.params.url }, req.body)
             .then(data => {
@@ -80,7 +72,7 @@ route.put('/:url/:token', verifytoken, (req, res) => {
     }
 })
 
-route.delete('/:url/:token', verifytokenbyparams, (req, res) => {
+route.delete('/:url', verifytoken, (req, res) => {
     if (req.user.user.email === process.env.ADMIN) {
         Product.deleteOne({ url: req.params.url })
             .then(data => {

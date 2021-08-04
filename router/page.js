@@ -3,16 +3,8 @@ const Page = require('../model/page')
 const jwt = require('jsonwebtoken')
 
 const verifytoken = (req, res, next) => {
-    const Jwt = req.body.jwt
-    jwt.verify(Jwt, process.env.ACCESSTOKEN, (err, user) => {
-        if (err) return res.status(404).send('Invalid User, Please logout and login again')
-        req.user = user
-        next()
-    });
-}
-const verifytokenbyparams = (req, res, next) => {
-    const Jwt = req.params.token
-    jwt.verify(Jwt, process.env.ACCESSTOKEN, (err, user) => {
+    const Token = req.headers.token
+    jwt.verify(Token, process.env.ACCESSTOKEN, (err, user) => {
         if (err) return res.status(404).send('Invalid User, Please logout and login again')
         req.user = user
         next()
@@ -20,8 +12,14 @@ const verifytokenbyparams = (req, res, next) => {
 }
 
 route.get('/', async (req, res) => {
-    const pages = await Page.find().sort({ createdAt: -1 })
-    res.send(pages)
+    if (req.query.type) {
+        console.log('object')
+        const pages = await Page.find({ type: req.query.type }).sort({ createdAt: -1 })
+        res.send(pages)
+    } else {
+        const pages = await Page.find().sort({ createdAt: -1 })
+        res.send(pages)
+    }
 })
 
 route.get('/:url', (req, res) => {
@@ -42,7 +40,8 @@ route.post('/', verifytoken, async (req, res) => {
             url: req.body.url,
             body: req.body.body,
             tags: req.body.tags,
-            imgurl: req.body.imgurl
+            imgurl: req.body.imgurl,
+            type: req.body.type
         })
         try {
             Page.findOne({ url: page.url })
@@ -75,7 +74,7 @@ route.put('/:url', verifytoken, (req, res) => {
     }
 })
 
-route.delete('/:url/:token', verifytokenbyparams, (req, res) => {
+route.delete('/:url', verifytoken, (req, res) => {
     if (req.user.user.email === process.env.ADMIN) {
         Page.deleteOne({ url: req.params.url })
             .then(data => {

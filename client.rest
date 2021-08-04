@@ -1,7 +1,7 @@
 GET http://localhost:5500
 
 ###
-GET http://localhost:5500/user
+GET http://localhost:5500/page
 
 
 

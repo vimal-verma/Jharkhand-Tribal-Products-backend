@@ -32,7 +32,12 @@ const PageSchema = new Schema({
   },
   imgurl: {
     type: String,
-  }
+  },
+  type: {
+    type: String,
+    default: 'service',
+    enum: ['service', 'portfolio', 'other'],
+  },
 
 }, { timestamps: true });
 
