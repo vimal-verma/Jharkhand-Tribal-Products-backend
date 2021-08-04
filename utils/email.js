@@ -19,7 +19,7 @@ module.exports.sendWelcomeEmail = async (user, email) => {
       var mainOptions = {
         from: 'startdropship noreply@startdropship.us',
         to: email,
-        subject: `Welcome to Vdev, ${user}!`,
+        subject: `Welcome to Startdropship, ${user}!`,
         html: data
       };
       transporter.sendMail(mainOptions, function (err, info) {
@@ -42,6 +42,29 @@ module.exports.sendPassResetEmail = async (user, email, url) => {
         from: 'startdropship noreply@startdropship.us',
         to: email,
         subject: `Hi ${user}!, You have requested to reset your password`,
+        html: data
+      };
+
+      transporter.sendMail(mainOptions, function (err, info) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('Message sent: ' + info.message);
+        }
+      });
+    }
+  });
+}
+
+module.exports.sendOrderEmail = async (user, email, product) => {
+  ejs.renderFile(__dirname + "/../public/order.ejs", { user, product }, function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      var mainOptions = {
+        from: 'startdropship noreply@startdropship.us',
+        to: email,
+        subject: `Hi ${user}!, You have Ordered a Product`,
         html: data
       };
 

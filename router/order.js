@@ -2,6 +2,7 @@ const route = require('express').Router()
 const Order = require('../model/order')
 const Product = require('../model/product')
 const jwt = require('jsonwebtoken')
+const { sendOrderEmail } = require('../utils/email')
 
 
 const verifytoken = (req, res, next) => {
@@ -112,7 +113,11 @@ route.post('/', verifytoken_order, async (req, res) => {
                 Product.updateMany({ _id: product_id }, {
                     $inc: { stock: -1 }
                 })
-                    .then(res.send(result))
+                    .then(savedorder => {
+                        res.send(result)
+                        var productdetails = `you have order a product of value ${order.price} ${order.currency_code}, tras_id is ${order.tras_id} `
+                        sendOrderEmail(req.user.user.name, req.user.user.email, productdetails)
+                    })
                     .catch(err => res.send(err))
             })
             .catch(err => res.send(err))

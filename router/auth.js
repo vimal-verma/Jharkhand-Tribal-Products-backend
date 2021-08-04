@@ -92,6 +92,7 @@ route.post('/resetpassword', async (req, res) => {
         const url = `${process.env.CLIENT_URL}/resetpassword/${resetToken}`
 
         sendPassResetEmail(user.name, user.email, url)
+        res.send('reset password email sent')
     } else {
         res.status(400).send('user not found, please register')
     }
