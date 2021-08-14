@@ -17,7 +17,7 @@ module.exports.sendWelcomeEmail = async (user, email) => {
       console.log(err);
     } else {
       var mainOptions = {
-        from: 'startdropship noreply@startdropship.us',
+        from: 'Start Dropship support@startdropship.us',
         to: email,
         subject: `Welcome to Startdropship, ${user}!`,
         html: data
@@ -39,7 +39,7 @@ module.exports.sendPassResetEmail = async (user, email, url) => {
       console.log(err);
     } else {
       var mainOptions = {
-        from: 'startdropship noreply@startdropship.us',
+        from: 'Start Dropship support@startdropship.us',
         to: email,
         subject: `Hi ${user}!, You have requested to reset your password`,
         html: data
@@ -62,7 +62,7 @@ module.exports.sendOrderEmail = async (user, email, product) => {
       console.log(err);
     } else {
       var mainOptions = {
-        from: 'startdropship noreply@startdropship.us',
+        from: 'Start Dropship support@startdropship.us',
         to: email,
         subject: `Hi ${user}!, You have Ordered a Product`,
         html: data
