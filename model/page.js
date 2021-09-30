@@ -16,7 +16,7 @@ const PageSchema = new Schema({
   },
   videourl: {
     type: String,
-    default: 'https://vdev.in/static/media/user.c647c201.png'
+    default: 'https://vimalverma.in/static/media/user.c647c201.png'
   },
   url: {
     type: String,

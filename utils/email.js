@@ -5,21 +5,21 @@ var mg = require('nodemailer-mailgun-transport');
 var auth = {
   auth: {
     api_key: process.env.MAILGUN_KEY,
-    domain: 'web.startdropship.us'
+    domain: 'mail.vimalverma.in'
   }
 }
 
 var transporter = nodemailer.createTransport(mg(auth));
 
 module.exports.sendWelcomeEmail = async (user, email) => {
-  ejs.renderFile(__dirname + "/../public/welcome.ejs", { user, url: 'vdev.in' }, function (err, data) {
+  ejs.renderFile(__dirname + "/../public/welcome.ejs", { user, url: 'vimalverma.in' }, function (err, data) {
     if (err) {
       console.log(err);
     } else {
       var mainOptions = {
-        from: 'Start Dropship support@startdropship.us',
+        from: 'vimalverma me@vimalverma.in',
         to: email,
-        subject: `Welcome to Startdropship, ${user}!`,
+        subject: `Welcome to vimalverma, ${user}!`,
         html: data
       };
       transporter.sendMail(mainOptions, function (err, info) {
@@ -39,7 +39,7 @@ module.exports.sendPassResetEmail = async (user, email, url) => {
       console.log(err);
     } else {
       var mainOptions = {
-        from: 'Start Dropship support@startdropship.us',
+        from: 'vimalverma me@vimalverma.in',
         to: email,
         subject: `Hi ${user}!, You have requested to reset your password`,
         html: data
@@ -62,7 +62,7 @@ module.exports.sendOrderEmail = async (user, email, product) => {
       console.log(err);
     } else {
       var mainOptions = {
-        from: 'Start Dropship support@startdropship.us',
+        from: 'vimalverma me@vimalverma.in',
         to: email,
         subject: `Hi ${user}!, You have Ordered a Product`,
         html: data
