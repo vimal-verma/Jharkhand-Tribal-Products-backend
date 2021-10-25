@@ -19,7 +19,7 @@ module.exports.sendWelcomeEmail = async (user, email) => {
       var mainOptions = {
         from: 'vimalverma me@vimalverma.in',
         to: email,
-        subject: `Welcome to vimalverma, ${user}!`,
+        subject: `Welcome to jharkhand tribal product shop, ${user}!`,
         html: data
       };
       transporter.sendMail(mainOptions, function (err, info) {
